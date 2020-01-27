@@ -3,9 +3,10 @@ const Schema = mongoose.Schema;
 
 const expenceSchema = new Schema({
   expence: {
-    type: Object,
+    type: Number,
     required: false,
-    trim: false
+    trim: false,
+    max:18000
   },
   month: {
     type: String,

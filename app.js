@@ -7,8 +7,6 @@ const mongoDB = 'mongodb://127.0.0.1/expressDemo';
 const hostName = '127.0.0.1';
 const port = 3000;
 
-// app.use(express.json());
-
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(routes);
