@@ -12,8 +12,16 @@ app.post('/add', function (req, res) {
   userController.addUser(req, res);
 });
 
+app.post('/addexpence', function (req, res) {
+  expenceController.addExpence(req, res);
+});
+
 app.get('/getexpence', function (req, res) {
   expenceController.getMonthwiseExpence(req, res);
+});
+
+app.get('/getexpencemonth/:month', function (req, res) {
+  expenceController.getExpenceMonth(req, res);
 });
 
 module.exports = app;
