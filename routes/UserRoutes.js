@@ -9,19 +9,19 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/add', function (req, res) {
+app.post('/user/add', function (req, res) {
   userController.addUser(req, res);
 });
 
-app.post('/addexpence', function (req, res) {
+app.post('/expence/add', function (req, res) {
   expenceController.addExpence(req, res);
 });
 
-app.get('/getexpence', function (req, res) {
+app.get('/expences', function (req, res) {
   expenceController.getMonthwiseExpence(req, res);
 });
 
-app.get('/getexpencemonth/:month', function (req, res) {
+app.get('/expences/months/:month', function (req, res) {
   expenceController.getExpenceMonth(req, res);
 });
 

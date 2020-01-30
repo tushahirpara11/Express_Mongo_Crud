@@ -1,16 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
+
 const routes = require('./routes/UserRoutes');
 
 const app = express();
-const mongoDB = 'mongodb://127.0.0.1/expressDemo';
-const hostName = '127.0.0.1';
-const port = 3000;
 
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(routes);
 
-app.listen(port, () => {
-  console.log(`Server running at http://${hostName}:${port}/`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server running at http://${process.env.HOSTNAME}:${process.env.PORT}/`);
 })
