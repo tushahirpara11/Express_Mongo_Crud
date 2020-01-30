@@ -7,20 +7,17 @@ Run this project using
 
 -------------------------------------------------------------------------------------------------------------------------------
 
-Add dependency using following command.
+Add dependency using following command.<br />
 
-sudo npm install express
-sudo npm install dotenv
-sudo npm install mongoose
+sudo npm install express<br />
+sudo npm install dotenv<br />
+sudo npm install mongoose<br />
 
 -------------------------------------------------------------------------------------------------------------------------------
 
-Please make sure that you must have created a .env file and add fllowing things.
-<br/>
-MONGODB = 'Connection Link'
-<br/>
-HOSTNAME = 'Host Address'
-<br/>
+Please make sure that you must have created a .env file and add fllowing things.<br/>
+MONGODB = 'Connection Link'<br/>
+HOSTNAME = 'Host Address'<br/>
 PORT = 'Port Number'
 
 -------------------------------------------------------------------------------------------------------------------------------
