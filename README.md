@@ -3,8 +3,8 @@ Use ExpressJS and MongoDB To Perform CRUD Operations In MVC.
 
 please make sure that you must have to create a .env file and add fllowing things.
 <br/>
-MONGODB = 'collection Link'
+<strong>MONGODB = 'collection Link'</strong>
 <br/>
-HOSTNAME = 'you host address'
+<strong>HOSTNAME = 'you host address'</strong>
 <br/>
-PORT = 'Your Port Number'
+<strong>PORT = 'Your Port Number'</strong>
