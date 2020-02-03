@@ -21,6 +21,11 @@ const userSchema = new Schema({
     trim: true,
     lowercase: true
   },
+  password: {
+    type: String,
+    required: true,
+    trim: true
+  },
   contact: {
     type: Number,
     required: false
