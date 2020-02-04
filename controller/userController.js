@@ -1,21 +1,27 @@
 const userModel = require('../models/userDataModel');
-async function addUser(req, res) {
+require('dotenv').config();
+const jwt = require('jsonwebtoken');
+
+exports.addUser = async function (req, res) {
   let addUser = new userModel.user(req.body);
   try {
-
     const userData = await addUser.save();
-    res.send(userData);
+    res.json({ status: true, message: "Completed", data: { userData } });
   } catch (err) {
-    res.status(500).send(err);
+    res.json({ status: false, message: "Error", data: { err } });
   }
 }
 
-async function getUser(req, res) {  
+exports.getUser = async function (req, res) {
   try {
-    const userData = await addUser.find({ $and: [{ email: req.body.email }, { password: req.body.password }] });
-    res.send(userData);
+    let userData = await userModel.findOne({ $and: [{ email: req.body.email }, { password: req.body.password }] }, { password: 0 });
+    if (userData) {
+      jwt.sign({ userData }, process.env.SECRET_KEY, (err, token) => {
+        if (err) res.json({ status: false, message: "Error", error: err });
+        res.json({ status: true, message: "OK", data: { token } });
+      });
+    }
   } catch (err) {
-    res.status(500).send(err);
+    res.json({ status: false, message: "Error", data: err });
   }
 }
-module.exports = { addUser, getUser };

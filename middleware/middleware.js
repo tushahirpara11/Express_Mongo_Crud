@@ -1,11 +1,14 @@
-function verifyToken(req, res, next) {
-  const headers = req.headers['authorizattions'];
-  if (typeof headers !== 'undefined') {
-    const getToken = headers.split[' '];
-    const headToken = getToken[1];
-    req.token = headToken;
-    next();
+const jwt = require('jsonwebtoken');
+
+exports.verifyToken = function (req, res, next) {
+  const headers = req.headers['authorization'];
+  if (typeof headers != 'undefined') {
+    jwt.verify(headers, process.env.SECRET_KEY, (err, decode) => {
+      if (err) res.json({ status: false, message: "Invalid Token" });
+      req.user = decode;
+      next();
+    });
   } else {
-    return res(500, "Invalid Token");
+    return res.json({ status: false, message: "Invalid Token" });
   }
 }
