@@ -1,16 +1,17 @@
 const expenceModel = require('../models/expenceModel');
+const { Message } = require('../commonFunctions/responceFuntion');
 
 exports.addExpence = async function (req, res) {
   let addExpence = new expenceModel(req.body);
   try {
     const expenceData = await addExpence.save();
     if (expenceData.length) {
-      res.json({ status: true, message: "Data Added Successfully", data: { expenceData } });
+      res.json(Message(200, "true", "Data Added Successfully", expenceData));
     } else {
-      res.json({ status: false, message: "No Data" });
+      res.json(Message("false", "No Data"));
     }
   } catch (err) {
-    res.json({ status: false, message: "Error", data: { err } });
+    res.json(Message("false", "Error", err));
   }
 }
 
@@ -24,11 +25,11 @@ exports.getMonthExpence = async function (req, res) {
         { $group: { _id: "$month", total: { $sum: "$expence" } } }]);
     }
     if (expence.length) {
-      res.json({ status: true, message: "Data Found", data: { expence } });
+      res.json(Message(200, true, "Data Found", expence));
     } else {
-      res.json({ status: false, message: "No Data" });
+      res.json(Message("false", "No Data"));
     }
   } catch (err) {
-    res.json({ status: false, message: "Error", data: { err } });
+    res.json(Message("false", "Error", err));
   }
 }
